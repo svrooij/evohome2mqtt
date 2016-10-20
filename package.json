@@ -1,0 +1,32 @@
+{
+  "name": "evohome2mqtt",
+  "version": "0.0.1",
+  "description": "Send the status of your evohome system to mqtt. Inspired on https://github.com/mqtt-smarthome",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svrooij/evohome2mqtt.git"
+  },
+  "keywords": [
+    "evohome",
+    "mqtt",
+    "home automation",
+    "mqtt-smarthome"
+  ],
+  "author": "Stephan van Rooij <github@svrooij.nl> (https://svrooij.nl)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/svrooij/evohome2mqtt/issues"
+  },
+  "homepage": "https://github.com/svrooij/evohome2mqtt#readme",
+  "dependencies": {
+    "config": "^1.21.0",
+    "lodash": "^4.16.4",
+    "mqtt": "^2.0.1",
+    "q": "^1.4.1",
+    "request": "^2.75.0"
+  }
+}

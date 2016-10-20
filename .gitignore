@@ -35,3 +35,7 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# Everything in the config directory except the default.json
+config/*
+!config/default.json

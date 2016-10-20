@@ -1,0 +1,17 @@
+{
+  "mqtt": {
+    "host":"",
+    "user":"",
+    "password":"",
+    "port": 1883,
+    "clientId":"",
+    "secure":false,
+    "topic":"evohome/"
+  },
+  "evohome": {
+    "user":"",
+    "password":"",
+    "applicationId":"91db1612-73fd-4500-91b2-e63b069b185c",
+    "updateInterval":30
+  }
+}
