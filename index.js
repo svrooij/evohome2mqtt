@@ -79,6 +79,7 @@ evohome.login(evoConf.user, evoConf.password, evoConf.applicationId).then(functi
     process.exit(10);
 });
 
+// This function fetches the data from evohome and will then schedule itself with setTimeout.
 function publishEvohomeStatus() {
     console.log('Loading data from evohome');
     evohomeSession.getLocations().then(function(locations) {
@@ -116,7 +117,7 @@ function publishEvohomeStatus() {
             }
         });
 
-        evohomeTimer = setTimeout(publishEvohomeStatus, evoConf.updateTimeout * 1000);
+        evohomeTimer = setTimeout(publishEvohomeStatus, evoConf.updateInterval * 1000);
     }).fail(function(err) {
         console.error(err);
         process.exit();
