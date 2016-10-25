@@ -50,12 +50,14 @@ npm install
 nano config/local.json
 ```
 You are now in the config file. Enter the following data as needed.
-At the moment you can only connect to mqtt if it doesn't require an user/password. This will be implemented soon.
+See [mqtt.connect](https://www.npmjs.com/package/mqtt#connect) for options how to format the host. `ws://ip_address:port` is the easiest.
 
 ```JSON
 {
   "mqtt": {
-    "host":"mqtt://127.0.0.1"
+    "host":"mqtt://127.0.0.1",
+    "user":null,
+    "password":null
   },
   "evohome": {
     "user":"user_or_email",

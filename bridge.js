@@ -12,20 +12,20 @@ var evoConf = config.get('evohome');
 var mqttConf = config.get('mqtt');
 
 // Configure the MQTT client to connect with a will statement (this will be send when we get disconnected.)
-const client = mqtt.connect(mqttConf.host, {
-    will: {
-        topic: mqttConf.topic + 'connected',
-        message: 0,
-        qos: 0
-    }
-});
+var mqttOptions = { will: {
+    topic: mqttConf.topic + 'connected',
+    message: 0,
+    qos: 0
+}};
+if(mqttConf.user && mqttConf.password){
+  mqttOptions.username = mqttConf.user;
+  mqttOptions.password = mqttConf.password;
+}
+const client = mqtt.connect(mqttConf.host, mqttOptions);
 
 client.on('connect', () => {
     // Inform controllers we are connected to mqtt (but not yet to the hardware).
-    client.publish(mqttConf.topic + 'connected', '1', {
-        qos: 0,
-        retain: true
-    });
+    publishConnectionStatus();
     client.subscribe(mqttConf.topic + 'set/thermostat/+');
 
 });
@@ -65,14 +65,17 @@ var evohomeSession = null;
 var evohomeDevices = [];
 var evohomeTimer = null;
 console.log('Starting EvoHome2mqtt');
+
+if(!evoConf.user || !evoConf.password){
+  console.error("Either Evohome user or password not set!");
+  process.exit(5);
+}
+
 console.log('User: ' + evoConf.user);
 evohome.login(evoConf.user, evoConf.password, evoConf.applicationId).then(function(session) {
     console.log('Successfully logged in to Evohome');
-    client.publish(mqttConf.topic + 'connected', '2', {
-        qos: 0,
-        retain: true
-    });
     evohomeSession = session;
+    publishConnectionStatus();
     publishEvohomeStatus();
 }).fail(function(err) {
     console.error(err);
@@ -122,4 +125,14 @@ function publishEvohomeStatus() {
         console.error(err);
         process.exit();
     });
+}
+
+function publishConnectionStatus() {
+  var status = "1";
+  if(evohomeSession)
+    status = "2";
+  client.publish(mqttConf.topic + 'connected', status, {
+      qos: 0,
+      retain: true
+  });
 }
