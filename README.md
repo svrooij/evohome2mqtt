@@ -1,5 +1,7 @@
 # Evohome2mqtt
 
+[![npm version](https://badge.fury.io/js/evohome2mqtt.svg)](https://badge.fury.io/js/evohome2mqtt)
+
 This node.js application is a bridge between the [Evohome system](http://getconnected.honeywell.com/en/evohome) and a mqtt server. Your thermostats will be polled every x seconds and the status(es) get published to your (local) mqtt server. As with a bridge it also works the other way around. You can set the temperature for a thermostat with a message to mqtt.
 
 It's intended as a building block in heterogenous smart home environments where an MQTT message broker is used as the centralized message bus. See [MQTT Smarthome on Github](https://github.com/mqtt-smarthome/mqtt-smarthome) for a rationale and architectural overview.
@@ -67,7 +69,7 @@ See [mqtt.connect](https://www.npmjs.com/package/mqtt#connect) for options how t
 }
 ```
 
-Try to start the application by running `node index.js`, and the topics should appear on your mqtt server.
+Try to start the application by running `npm start` or directly by `node bridge.js`, and the topics should appear on your mqtt server.
 
 ## Running in the background
 If everything works as expected, you should make the app run in the background automatically. Personally I use PM2 for this. And they have a great [guide for this](http://pm2.keymetrics.io/docs/usage/quick-start/).
