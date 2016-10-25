@@ -1,6 +1,6 @@
 {
   "name": "evohome2mqtt",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Send the status of your evohome system to mqtt. Inspired on https://github.com/mqtt-smarthome",
   "main": "bridge.js",
   "scripts": {
