@@ -36,6 +36,8 @@
     "yargs": "^9.0.1"
   },
   "devDependencies": {
+    "pre-commit": "^1.2.2",
     "standard": "^10.0.3"
-  }
+  },
+  "pre-commit": [ "test" ]
 }
