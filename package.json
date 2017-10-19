@@ -1,6 +1,6 @@
 {
   "name": "evohome2mqtt",
-  "version": "0.0.4",
+  "version": "0.0.0-development",
   "description": "Send the status of your evohome system to mqtt. Inspired on https://github.com/mqtt-smarthome",
   "main": "index.js",
   "bin": {
@@ -8,11 +8,12 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "standard && exit 0"
+    "test": "standard && exit 0",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/svrooij/evohome2mqtt.git"
+    "url": "https://github.com/svrooij/evohome2mqtt.git"
   },
   "keywords": [
     "evohome",
@@ -37,7 +38,10 @@
   },
   "devDependencies": {
     "pre-commit": "^1.2.2",
-    "standard": "^10.0.3"
+    "standard": "^10.0.3",
+    "semantic-release": "^8.2.0"
   },
-  "pre-commit": [ "test" ]
+  "pre-commit": [
+    "test"
+  ]
 }
