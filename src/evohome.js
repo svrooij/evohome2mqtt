@@ -6,6 +6,7 @@
 const Q = require('q')
 const request = require('request')
 const _ = require('lodash')
+const log = require('yalm')
 
 function UserInfo (json) {
   this.userID = json.userID
@@ -140,6 +141,7 @@ Session.prototype._renew = function () {
   var self = this
   var credentials = sessionCredentials[this.sessionID]
   return login(credentials.username, credentials.password, credentials.appId).then(function (json) {
+    log.debug('Session ID renewed')
     self.sessionId = json.sessionId
     self.userInfo = new UserInfo(json.userInfo)
     self.latestEulaAccepted = json.latestEulaAccepted
@@ -164,9 +166,9 @@ Session.prototype._request = function (url) {
       try {
         json = JSON.parse(response.body)
       } catch (ex) {
-        console.error(ex)
-        console.error(response.body)
-        console.error(response)
+        log.error(ex)
+        log.error(response.body)
+        log.error(response)
         deferred.reject(ex)
       }
       if (json) {
@@ -203,9 +205,9 @@ function login (username, password, appId) {
       try {
         json = JSON.parse(response.body)
       } catch (ex) {
-        console.error(ex)
-        console.error(response.body)
-        console.error(response)
+        log.error(ex)
+        log.error(response.body)
+        log.error(response)
         deferred.reject(ex)
       }
       if (json) {
@@ -217,7 +219,8 @@ function login (username, password, appId) {
 }
 
 module.exports = {
-  login: function (username, password, appId) {
+  login: function (username, password, appId, logLevel = 'info') {
+    log.setLevel(logLevel)
     return login(username, password, appId).then(function (json) {
       return new Session(username, password, appId, json)
     })

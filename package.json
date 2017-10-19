@@ -2,10 +2,13 @@
   "name": "evohome2mqtt",
   "version": "0.0.4",
   "description": "Send the status of your evohome system to mqtt. Inspired on https://github.com/mqtt-smarthome",
-  "main": "bridge.js",
+  "main": "index.js",
+  "bin": {
+    "evohome2mqtt": "index.js"
+  },
   "scripts": {
-    "start": "node bridge.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "standard && exit 0"
   },
   "repository": {
     "type": "git",
@@ -25,10 +28,14 @@
   },
   "homepage": "https://github.com/svrooij/evohome2mqtt#readme",
   "dependencies": {
-    "config": "^1.26.1",
     "lodash": "^4.17.4",
-    "mqtt": "^2.11.0",
+    "mqtt": "^2.13.1",
     "q": "^1.5.0",
-    "request": "^2.81.0"
+    "request": "^2.83.0",
+    "yalm": "^4.1.0",
+    "yargs": "^9.0.1"
+  },
+  "devDependencies": {
+    "standard": "^10.0.3"
   }
 }
