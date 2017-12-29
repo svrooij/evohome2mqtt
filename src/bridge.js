@@ -46,13 +46,13 @@ function start () {
         var device = evohomeDevices[name]
         clearTimeout(evohomeTimer)
         if (payload.temp && payload.minutes) {
-          console.log('Set temp. in %s to %d for %d minutes', name, payload.temp, payload.minutes)
+          log.info('Set temp. in %s to %d for %d minutes', name, payload.temp, payload.minutes)
           evohomeSession.modifyHeatSetpoint(device.deviceID, 'Temporary', payload.temp, payload.minutes).then(publishEvohomeStatus)
         } else if (payload.temp) {
-          console.log('Set temp. in %s to %d', name, payload.temp)
+          log.info('Set temp. in %s to %d', name, payload.temp)
           evohomeSession.modifyHeatSetpoint(device.deviceID, 'Hold', payload.temp).then(publishEvohomeStatus)
         } else {
-          console.log('Revert %s back to the schedule', name)
+          log.info('Revert %s back to the schedule', name)
           evohomeSession.modifyHeatSetpoint(device.deviceID, 'Scheduled').then(publishEvohomeStatus)
         }
       }
