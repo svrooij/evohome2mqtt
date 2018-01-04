@@ -19,24 +19,24 @@ Using xiaomi2mqtt is really easy, but it requires at least [Node.js](https://nod
 
 ## Usage
 
-```bash
+```text
 evohome2mqtt 0.0.0-development
 Usage: evohome2mqtt [options]
 
 Options:
   --user                  Your evohome username                       [required]
   --password              Your evohome password                       [required]
-  -h, --help              Show help
-  -l, --logging           possiblevalues: "error", "warn","info","debug"
-                                                               [default: "info"]
+  -l, --logging           Logging level
+                   [choices: "error", "warn", "info", "debug"] [default: "info"]
   -m, --mqtt              mqtt broker url. See
-                          https://github.com/svrooij/evohome2mqtt#mqtt-url
+                          https://github.com/svrooij/node-xiaomi2mqtt#mqtt-url
                                                    [default: "mqtt://127.0.0.1"]
   -n, --name              instance name. used as mqtt client id and as topic
                           prefix                            [default: "evohome"]
   -p, --polling-interval  evohome polling interval in seconds      [default: 30]
   --app                   Specify a different application ID (EXPERT?)
                                [default: "91db1612-73fd-4500-91b2-e63b069b185c"]
+  -h, --help              Show help                                    [boolean]
   --version               Show version number                          [boolean]
 ```
 
