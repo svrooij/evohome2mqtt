@@ -28,7 +28,7 @@ function UserInfo (json) {
 var sessionCredentials = {}
 
 function Session (username, password, appId, json) {
-    // console.log('Session: ' + JSON.stringify(json));
+  // console.log('Session: ' + JSON.stringify(json));
   this.sessionId = json.sessionId
   this.userInfo = new UserInfo(json.userInfo)
   this.latestEulaAccepted = json.latestEulaAccepted
@@ -71,13 +71,13 @@ function Device (json) {
 function Thermostat (json) {
   this.units = json.units
   this.indoorTemperature = json.indoorTemperature
-    // this.outdoorTemperature = json.outdoorTemperature;
+  // this.outdoorTemperature = json.outdoorTemperature;
   this.allowedModes = json.allowedModes
-    // this.deadband = json.deadband;
+  // this.deadband = json.deadband;
   this.minHeatSetpoint = json.minHeatSetpoint
   this.maxHeatSetpoint = json.maxHeatSetpoint
-    // this.minCoolSetpoint = json.minCoolSetpoint;
-    // this.maxCoolSetpoint = json.maxCoolSetpoint;
+  // this.minCoolSetpoint = json.minCoolSetpoint;
+  // this.maxCoolSetpoint = json.maxCoolSetpoint;
   this.changeableValues = json.changeableValues
 }
 

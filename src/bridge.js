@@ -94,7 +94,7 @@ function publishEvohomeStatus () {
   }
   log.log('Loading data from evohome')
   evohomeSession.getLocations().then(function (locations) {
-        // currently only the first location. (PULL REQUEST please!!)
+    // currently only the first location. (PULL REQUEST please!!)
     locations[0].devices.forEach(function (device) {
       if (device.thermostat) {
         const name = device.name.toLowerCase()
