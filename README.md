@@ -3,8 +3,7 @@
 [![npm](https://img.shields.io/npm/v/evohome2mqtt.svg?style=flat-square)](https://www.npmjs.com/package/evohome2mqtt)
 [![travis](https://img.shields.io/travis/svrooij/evohome2mqtt.svg?style=flat-square)](https://travis-ci.org/svrooij/evohome2mqtt)
 [![mqtt-smarthome](https://img.shields.io/badge/mqtt-smarthome-blue.svg?style=flat-square)](https://github.com/mqtt-smarthome/mqtt-smarthome)
-[![Support me on Patreon][badge_patreon]][patreon]
-[![PayPal][badge_paypal_donate]][paypal-donations]
+[![Support me on Github][badge_sponsor]][link_sponsor]
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
 
 This node.js application is a bridge between the [Evohome system](http://getconnected.honeywell.com/en/evohome) and a mqtt server. Your thermostats will be polled every x seconds and the status(es) get published to your (local) mqtt server. As with a bridge it also works the other way around. You can set the temperature for a thermostat with a message to mqtt.
@@ -13,7 +12,7 @@ It's intended as a building block in heterogenous smart home environments where 
 
 ## Installation
 
-Using xiaomi2mqtt is really easy, but it requires at least [Node.js](https://nodejs.org/) v6 or higher. (This app is tested against v6 and v8).
+Using evohome2mqtt is really easy, but it requires at least [Node.js](https://nodejs.org/) v6 or higher. (This app is tested against v10 and v12).
 
 `sudo npm install -g evohome2mqtt`
 
@@ -29,7 +28,7 @@ Options:
   -l, --logging           Logging level
                    [choices: "error", "warn", "info", "debug"] [default: "info"]
   -m, --mqtt              mqtt broker url. See
-                          https://github.com/svrooij/node-xiaomi2mqtt#mqtt-url
+                          https://github.com/svrooij/evohome2mqtt#mqtt-url
                                                    [default: "mqtt://127.0.0.1"]
   -n, --name              instance name. used as mqtt client id and as topic
                           prefix                            [default: "evohome"]
@@ -112,11 +111,9 @@ If everything works as expected, you should make the app run in the background a
 
 The latest version of this bridge is inspired on [hue2mqtt.js](https://github.com/hobbyquaker/hue2mqtt.js) by [Sabastian Raff](https://github.com/hobbyquaker). That was a great sample on how to create a globally installed, command-line, something2mqtt bridge.
 
-## Beer
+## Beer or Coffee
 
-This bridge took me a lot of hours to build, so I invite everyone using it to [Buy me a beer](https://svrooij.nl/buy-me-a-beer/)
+This bridge took me a lot of hours to build, so I invite everyone using it to at least have a look at my [Sponsor page](https://github.com/sponsors/svrooij). Even though the sponsoring tiers are montly you can also cancel anytime :wink:
 
-[badge_paypal_donate]: https://svrooij.nl/badges/paypal_donate.svg
-[badge_patreon]: https://svrooij.nl/badges/patreon.svg
-[paypal-donations]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=T9XFJYUSPE4SG
-[patreon]: https://www.patreon.com/svrooij
+[badge_sponsor]: https://img.shields.io/badge/Sponsor-on%20Github-red?style=flat-square
+[link_sponsor]: https://github.com/sponsors/svrooij
