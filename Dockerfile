@@ -1,11 +1,10 @@
 FROM node:current-alpine as deps
 WORKDIR /usr/src/app
-COPY package*.json  ./
+COPY package*.json ./.build/node-prune.sh  ./
 RUN apk add --no-cache curl && \
     npm ci --only=production && \
-    curl -sfL https://install.goreleaser.com/github.com/tj/node-prune.sh | sh -s -- -b /usr/local/bin && \
-    npm prune --production && \
-    /usr/local/bin/node-prune
+    chmod +x node-prune.sh && \
+    ./node-prune.sh
 
 FROM node:current-alpine
 WORKDIR /usr/src/app
