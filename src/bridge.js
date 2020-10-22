@@ -86,7 +86,7 @@ function loadLocatonAndPush () {
   if (!evohomeClient) return
 
   log.log('Loading data from evohome')
-  evohomeClient.getLocationsWithAutoLogin().then(locations => {
+  evohomeClient.getLocationsWithAutoLogin(720).then(locations => {
     // currently only the first location. (PULL REQUEST please!!)
     locations[0].devices.forEach(function (device) {
       if (device.thermostat) {
