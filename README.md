@@ -104,7 +104,47 @@ Will set the temperature to 20º for 48 minutes.
 
 An empty message to `evohome/set/thermostat/livingroom` will revert the `livingroom` back to the schedule.
 
-## Use [PM2](http://pm2.keymetrics.io) to run in background
+## Run in Docker
+
+You can run this app in docker. We provide an image for `linux/amd64` `linux/arm/v7` and `linux/arm64`.
+Everything is configurable with environment variables, docker compose sample:
+
+```yaml
+version: "3.7"
+services:
+  evohome:
+    image: svrooij/evohome2mqtt
+    restart: unless-stopped # This makes sure that on a crash it will automatically be restarted.
+    environment:
+      - EVOHOME2MQTT_USER=your_user_name # Replace with your username for the evohome system
+      - EVOHOME2MQTT_PASSWORD=complicated_password_I_hope # Replace with your password for the evohome system
+      - EVOHOME2MQTT_MQTT=mqtt://emqx:1883 # EMQX is a nice mqtt broker
+    depends_on:
+      - emqx
+# Optional MQTT server (I like emqx over mosquitto)
+  emqx:
+    image: emqx/emqx
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+      - "18083:18083"
+```
+
+Off course you can also start it wil the following oneline.
+
+```sh
+# Start in current process CTRL+C quits the app
+docker run -e "EVOHOME2MQTT_USER=your_user_name" -e "EVOHOME2MQTT_PASSWORD=complicated_password" -e "EVOHOME2MQTT_MQTT=mqtt://emqx:1883" -n evohome svrooij/evohome2mqtt
+
+# Start in background
+docker run -d -e "EVOHOME2MQTT_USER=your_user_name" -e "EVOHOME2MQTT_PASSWORD=complicated_password" -e "EVOHOME2MQTT_MQTT=mqtt://emqx:1883" -n evohome svrooij/evohome2mqtt
+# Follow logs from running in background
+docker logs -f evohome
+```
+
+### Use PM2 to run in background (deprecated)
+
+In the past running this app with PM2 was recommended, currently (Oct 2020) I would suggest to use docker.
 
 If everything works as expected, you should make the app run in the background automatically. Personally I use PM2 for this. And they have a great [guide for this](http://pm2.keymetrics.io/docs/usage/quick-start/).
 

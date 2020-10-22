@@ -1,8 +1,7 @@
 FROM node:current-alpine as deps
 WORKDIR /usr/src/app
 COPY package*.json ./.build/node-prune.sh  ./
-RUN apk add --no-cache curl && \
-    npm ci --only=production && \
+RUN npm ci --only=production && \
     chmod +x node-prune.sh && \
     ./node-prune.sh
 
