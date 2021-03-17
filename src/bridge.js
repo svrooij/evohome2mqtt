@@ -135,7 +135,7 @@ function handleUpdate (name, payload) {
     if (payload.temp && payload.minutes) {
       log.info('Set temp. in %s to %d for %d minutes', name, payload.temp, payload.minutes)
       evohomeClient
-        .setHeatpointSetpoint(device.deviceID, HeatSetpointStatus.Temporary, payload.temp, payload.minutes)
+        .setHeatSetpoint(device.deviceID, HeatSetpointStatus.Temporary, payload.temp, payload.minutes)
         .then(loadLocatonAndPush)
         .catch(err => {
           log.warn('Error setting heatpoint %j', err)
@@ -143,7 +143,7 @@ function handleUpdate (name, payload) {
     } else if (payload.temp) {
       log.info('Set temp. in %s to %d', name, payload.temp)
       evohomeClient
-        .setHeatpointSetpoint(device.deviceID, HeatSetpointStatus.Hold, payload.temp)
+        .setHeatSetpoint(device.deviceID, HeatSetpointStatus.Hold, payload.temp)
         .then(loadLocatonAndPush)
         .catch(err => {
           log.warn('Error setting heatpoint %j', err)
@@ -151,7 +151,7 @@ function handleUpdate (name, payload) {
     } else {
       log.info('Revert %s back to the schedule', name)
       evohomeClient
-        .setHeatpointSetpoint(device.deviceID, HeatSetpointStatus.Scheduled)
+        .setHeatSetpoint(device.deviceID, HeatSetpointStatus.Scheduled)
         .then(loadLocatonAndPush)
         .catch(err => {
           log.warn('Error reverting heatpoint %j', err)
