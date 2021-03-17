@@ -38,13 +38,13 @@ function start () {
     }
 
     if (topic.startsWith(config.name + '/set/thermostat/')) {
-      var payload = null
+      let payload = null
       try {
         payload = JSON.parse(message)
       } catch (e) {
         payload = {}
       }
-      var name = topic.substr(topic.lastIndexOf('/') + 1)
+      const name = topic.substr(topic.lastIndexOf('/') + 1)
       handleUpdate(name, payload)
     }
   })
@@ -129,7 +129,7 @@ function loadLocatonAndPush () {
 
 function handleUpdate (name, payload) {
   if (evohomeDevices[name]) {
-    var device = evohomeDevices[name]
+    const device = evohomeDevices[name]
     clearTimeout(evohomeTimer)
 
     if (payload.temp && payload.minutes) {

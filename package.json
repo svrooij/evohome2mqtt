@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "standard && exit 0"
+    "test": "npx standard && exit 0"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
     "mqtt-smarthome",
     "honeywell"
   ],
-  "author": "Stephan van Rooij <github@svrooij.nl> (https://svrooij.nl)",
+  "author": "Stephan van Rooij <github@svrooij.nl> (https://svrooij.io)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/svrooij/evohome2mqtt/issues"
@@ -29,9 +29,9 @@
   "homepage": "https://github.com/svrooij/evohome2mqtt#readme",
   "dependencies": {
     "@svrooij/evohome": "^1.0.2",
-    "mqtt": "^4.2.1",
+    "mqtt": "^4.2.6",
     "yalm": "^4.1.0",
-    "yargs": "^16.0.3"
+    "yargs": "^16.2.0"
   },
   "devDependencies": {
     "pre-commit": "^1.2.2",
